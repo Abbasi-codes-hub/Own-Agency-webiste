@@ -5,21 +5,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Welcome to our website here your ideas turns into reality" />
+  <meta name="keywords" content="Web Development, UI UX Design, Website Design, SEO, Codentix" />
+  <meta name="author" content="Samar Abbas" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="canonical" href="https://codentix.dev/" />
   <link rel="shortcut icon" href="./favicon/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <title>Samar-codes | Home-page | Ux-desings</title>
+  <title>Codentix | Home | UI/UX & Development</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+      <!-- Ensure skip link for screen readers -->
+     <a href="#main-content" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-999;">Skip to main content</a>
+    <!-- original full body content remains same -->
   <!-- header layout starts -->
   <header>
     <nav class="nav-container">
@@ -52,7 +55,7 @@
   <!-- header layout Ends -->
 
   <!-- hero section layout starts -->
-  <main class="container">
+  <main class="container" tabindex="-1">
     <section class="hero-section">
       <div class="left-section">
         <p class="subheading">Codentix</p>
@@ -388,10 +391,28 @@
       </p>
     </div>
   </footer>
-  <script src="toggle-javascript/toggle.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+ <script src="toggle-javascript/toggle.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
   <script>
-    AOS.init();
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init();
+
+      // Keyboard accessible nav toggle
+      const menuIcon = document.querySelector(".menu-icon");
+      if (menuIcon) {
+        menuIcon.setAttribute("tabindex", "0");
+        menuIcon.setAttribute("role", "button");
+        menuIcon.setAttribute("aria-label", "Toggle navigation menu");
+
+        menuIcon.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            menuIcon.click();
+          }
+        });
+      }
+    });
+  </script>
   </script>
 </body>
 
