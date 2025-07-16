@@ -3,23 +3,74 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Welcome to our website here your ideas turns into reality" />
-  <link rel="shortcut icon" href="./favicon/favicon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="Codentix: Professional Web Development & UI/UX Design Services. We build fast, responsive, and SEO-friendly websites to grow your business." />
+  <meta name="keywords" content="web development, UI/UX design, responsive websites, SEO optimization, landing pages, Codentix" />
+  <meta name="author" content="Samar Abbas" />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Codentix | Web Development & UI/UX Design" />
+  <meta property="og:description" content="Turning Ideas Into Powerful Digital Experiences" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://codentix.dev/" />
+  <meta property="og:image" content="https://codentix.dev/images/og-image.webp" />
+  <meta property="og:site_name" content="Codentix" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://codentix.dev/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon/favicon.ico" sizes="any" />
+  <link rel="icon" href="./favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
+
+  <!-- Preconnect & DNS Prefetch -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <title>Samar-codes | Home-page | Ux-desings</title>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+  <!-- Critical Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS & Animations -->
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Critical CSS for Accessibility -->
+  <style>
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: 999;
+      background: #000;
+      color: #fff;
+      padding: 0.5rem;
+    }
+    .skip-link:focus {
+      left: 10px;
+      top: 10px;
+      width: auto;
+      height: auto;
+      overflow: visible;
+    }
+  </style>
+
+  <title>Codentix | Web Development & UI/UX Design Services</title>
 </head>
 
 <body>
+      <!-- Ensure skip link for screen readers -->
+     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- original full body content remains same -->
   <!-- header layout starts -->
   <header>
     <nav class="nav-container">
@@ -52,7 +103,7 @@
   <!-- header layout Ends -->
 
   <!-- hero section layout starts -->
-  <main class="container">
+  <main class="container" tabindex="-1">
     <section class="hero-section">
       <div class="left-section">
         <p class="subheading">Codentix</p>
@@ -388,10 +439,42 @@
       </p>
     </div>
   </footer>
-  <script src="toggle-javascript/toggle.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+ <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
   <script>
-    AOS.init();
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({
+        duration: 800,
+        once: true,
+        easing: 'ease-in-out'
+      });
+
+      const menuToggle = document.querySelector('.menu-toggle');
+      const primaryNav = document.getElementById('primary-nav');
+
+      if (menuToggle && primaryNav) {
+        menuToggle.addEventListener('click', function () {
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+          primaryNav.classList.toggle('active');
+        });
+      }
+
+      const navLinks = document.querySelectorAll('.nav-links');
+      navLinks.forEach(link => {
+        link.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+      });
+
+      // Set current year
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    });
   </script>
 </body>
 
